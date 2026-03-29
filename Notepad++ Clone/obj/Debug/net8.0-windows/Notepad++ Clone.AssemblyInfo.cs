@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Notepad++ Clone")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7871e801c35734a3a6c30cd8ab667a32a1863cce")]
 [assembly: System.Reflection.AssemblyProductAttribute("Notepad++ Clone")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Notepad++ Clone")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,19 @@
+﻿<Window x:Class="Notepad___Clone.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notepad___Clone"
+        mc:Ignorable="d"
+        Title="About" Height="269" Width="485">
+    <StackPanel Margin="20,20,36,22" Background="White">
+        <TextBlock Text="Name: Cosmin" Margin="0,5"/>
+        <TextBlock Text="Email:" Margin="0,10,0,0"/>
+
+        <TextBlock Text="cosminpelin21@gmail.com" 
+           Foreground="Blue" 
+           TextDecorations="Underline" 
+           HorizontalAlignment="Left"/>
+        <Button Content="Close" Click="Close_Click" Width="66"/>
+    </StackPanel>
+</Window>

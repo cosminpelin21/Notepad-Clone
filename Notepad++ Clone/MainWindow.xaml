@@ -6,7 +6,76 @@
         xmlns:local="clr-namespace:Notepad___Clone"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Window.CommandBindings>
+        <CommandBinding Command="New" Executed="NewFile_Click"/>
+        <CommandBinding Command="Open" Executed="OpenFile_Click"/>
+        <CommandBinding Command="Save" Executed="SaveFile_Click"/>
+    </Window.CommandBindings>
 
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New file" Command="New" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="Save file" Command="Save" InputGestureText="Ctrl+S"/>
+                <MenuItem Header="Save file as..." Click="SaveAsFile_Click"/>
+                <MenuItem Header="Open file..." Command="Open" InputGestureText="Ctrl+O"/>
+                <MenuItem Header="Exit" Click="Exit_Click"/>
+                <MenuItem Header="Close all files" Click="CloseAllFiles_Click"/>
+            </MenuItem>
+            <MenuItem Header="Search">
+                <MenuItem Header="Find.." Click="FindReplace_Click"/>
+                <MenuItem Header="Replace..." Click="FindReplace_Click"/>
+                <MenuItem Header="Replace All.." Click="FindReplace_Click"/>
+                <MenuItem x:Name="AllTabsMenu" 
+                      Header="All tabs / Selected tab" 
+                      IsCheckable="True" />
+            </MenuItem>
+            <MenuItem Header="View">
+                <MenuItem Header="Standard" Click="ViewStandard_Click"/>
+                <MenuItem Header="Folder Explorer" Click="ViewExplorer_Click"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="ExplorerColumn" Width="200"/>
+                <ColumnDefinition x:Name="SplitterColumn" Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel x:Name="ExplorerPanel" Grid.Column="0" Background="AliceBlue">
+                <TextBlock Text="Folder Explorer" DockPanel.Dock="Top" Margin="5" FontWeight="Bold"/>
+                <Button Content="Select Root Folder" DockPanel.Dock="Top" Margin="5" Click="SelectFolder_Click"/>
+                <TreeView x:Name="FolderTree" Margin="5" MouseDoubleClick="FolderTree_MouseDoubleClick">
+                    <TreeView.Resources>
+                        <ContextMenu x:Key="FolderContextMenu">
+                            <MenuItem Header="New File" Click="ContextMenuNewFile_Click"/>
+                            <MenuItem Header="Copy Path" Click="CopyPath_Click"/>
+                            <MenuItem Header="Copy Folder" Click="CopyFolder_Click"/>
+                            <MenuItem Header="Paste Folder" Click="PasteFolder_Click"/>
+                        </ContextMenu>
+                    </TreeView.Resources>
+
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <Setter Property="ContextMenu" Value="{StaticResource FolderContextMenu}"/>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                </TreeView>
+            </DockPanel>
+
+            <GridSplitter x:Name="MainSplitter" Grid.Column="1" HorizontalAlignment="Stretch" Background="LightBlue"/>
+
+            <TabControl x:Name="FileTabs" Grid.Column="2">
+                <TabControl.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Close tab" Click="CloseCurrentTab_Click"/>
+                    </ContextMenu>
+                </TabControl.ContextMenu>
+            </TabControl>
+        </Grid>
+    </DockPanel>
 </Window>
